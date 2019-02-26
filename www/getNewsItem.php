@@ -1,10 +1,18 @@
 <?php
-require_once('config.php');
+
+use Lib\News\Constants;
+use Lib\News\Database;
+
+require_once('Lib/News/Constants.php');
+require_once('Lib/News/Database.php');
+
+$dpo = new Database();
 
 //getting news item by id to show in view.php
 if(isset($_GET['id'])) {
     $newsId = $_GET['id'];
 }
+$newsCont = $dpo->getNews($newsId);
 
-$getNews = $dbConn->query('SELECT title, content FROM news WHERE id = ' . $newsId);
-$newsCont = $getNews->fetch();
+//return to previous page
+$back = $_SERVER['HTTP_REFERER'];

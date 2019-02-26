@@ -1,4 +1,7 @@
-<?php require_once('getData.php');
+<?php
+require_once('Lib/News/Constants.php');
+require_once('Lib/News/Database.php');
+require_once('getData.php');
 header('Content-Type: text/html; charset=utf-8');
 ;?>
 
@@ -9,14 +12,14 @@ header('Content-Type: text/html; charset=utf-8');
     <h2>Новости</h2>
     <?php foreach ($newsList as $news): ?>
     <section class="news-block">
-        <span class="news-date"><?=gmdate("d.m.y", $news['idate']);?></span>
+        <span class="news-date"><?=date("d.m.y", $news['idate']);?></span>
         <a href="view.php?id=<?=$news['id'];?>" class="news-title"><?=$news['title'];?></a>
         <p class="news announce"><?=$news['announce'];?></p>
     </section>
     <?php endforeach; ?>
     <section class="pages">
         <h3>Страницы:</h3>
-        <?php for ($page = 1; $page <= $number_of_pages; $page++): ?>
+        <?php for ($page = 1; $page <= $numberOfPages; $page++): ?>
             <a class="page-number" href="news.php?page=<?=$page;?>"><?=$page;?></a>
         <?php endfor; ?>
     </section>
