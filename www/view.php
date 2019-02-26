@@ -11,5 +11,5 @@ header('Content-Type: text/html; charset=utf-8');
         <h2><?=$newsCont['title'];?></h2>
         <p class="news-content"><?=$newsCont['content'];?></p>
     </section>
-    <div class="back-to-newslist"><a href="news.php?page=1">Все новости >></a></div>
+    <div class="back-to-newslist"><a href="<?=$back;?>">Все новости >></a></div>
 </div>
